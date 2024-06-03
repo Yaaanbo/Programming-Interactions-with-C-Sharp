@@ -9,15 +9,26 @@ namespace Course
         [Header("Components")]
         [SerializeField] private Rigidbody rb;
 
-        [Header("Physics Values")]
+        [Header("Angular velocity")]
         [SerializeField] private float minAngularVelocity;
         [SerializeField] private float maxAngularVelocity;
 
-        private void Start()
+        [Header("Forces")]
+        [SerializeField] private float fireForce;
+        [SerializeField] private ForceMode forceMode;
+
+        [Header("Others")]
+        [SerializeField] private float lifeTime;
+
+        public void SetUp(Vector3 _fireDir)
         {
+            this.rb.AddForce(_fireDir * fireForce, forceMode);
+
             float randomAngularVelocity = Random.Range(minAngularVelocity, maxAngularVelocity);
             float rotationSpeed = Random.Range(50f, 75f);
-            rb.angularVelocity = new Vector3(randomAngularVelocity, randomAngularVelocity, randomAngularVelocity) * rotationSpeed;
+            this.rb.angularVelocity = new Vector3(randomAngularVelocity, randomAngularVelocity, randomAngularVelocity) * rotationSpeed;
+
+            Destroy(this.gameObject, lifeTime);
         }
     }
 }

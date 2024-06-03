@@ -55,6 +55,7 @@ namespace Course
             if (Input.GetMouseButtonDown(0))
             {
                 CannonBall newCannonBall = Instantiate(cannonBallPrefab, shootingPoint.position, Quaternion.identity);
+                newCannonBall.SetUp(this.transform.forward);
             }
         }
     }
