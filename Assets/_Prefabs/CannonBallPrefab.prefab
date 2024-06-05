@@ -123,7 +123,14 @@ MonoBehaviour:
   minAngularVelocity: -15
   maxAngularVelocity: 15
   fireForce: 250
-  forceMode: 1
+  firingForceMode: 1
+  explosionRadius: 5
+  explosionForce: 7
+  explosionUpwardModifier: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  explosionForceMode: 1
   lifeTime: 5
 --- !u!1 &7303946394940784818
 GameObject:
