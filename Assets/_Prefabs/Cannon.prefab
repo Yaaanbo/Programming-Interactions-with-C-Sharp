@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 923615573}
   serializedVersion: 2
   m_LocalRotation: {x: 0.04435381, y: -0.000000029367738, z: -0.000000010604263, w: 0.9990159}
-  m_LocalPosition: {x: -0, y: 0.697, z: -1.118}
+  m_LocalPosition: {x: -0, y: 0.91, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,7 +53,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 28.970562
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -400,6 +400,9 @@ MonoBehaviour:
   minYRotation: 60
   maxYRotation: 205
   rotSpeed: 250
+  shootingPoint: {fileID: 2236371049338748935}
+  cannonBallPrefab: {fileID: 3298371244298387349, guid: 3547474a124479641896f7b8eb250e0d,
+    type: 3}
 --- !u!1 &7491226463429729616
 GameObject:
   m_ObjectHideFlags: 0

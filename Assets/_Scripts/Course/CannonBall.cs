@@ -6,8 +6,11 @@ namespace Course
 {
     public class CannonBall : MonoBehaviour
     {
+        private static readonly int explodeParameter = Animator.StringToHash("Exploded");
+
         [Header("Components")]
         [SerializeField] private Rigidbody rb;
+        [SerializeField] private Animator anim;
 
         [Header("Angular velocity")]
         [SerializeField] private float minAngularVelocity;
@@ -28,7 +31,22 @@ namespace Course
             float rotationSpeed = Random.Range(50f, 75f);
             this.rb.angularVelocity = new Vector3(randomAngularVelocity, randomAngularVelocity, randomAngularVelocity) * rotationSpeed;
 
-            Destroy(this.gameObject, lifeTime);
+            //Destroy(this.gameObject, lifeTime);
+        }
+
+        public void OnAnimationFinished()
+        {
+            Destroy(this.gameObject);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            this.rb.angularVelocity = Vector3.zero;
+            this.rb.velocity = Vector3.zero;
+            this.rb.isKinematic = true;
+            this.rb.detectCollisions = false;
+
+            anim.SetTrigger(explodeParameter);
         }
     }
 }
