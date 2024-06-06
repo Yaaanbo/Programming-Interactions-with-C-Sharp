@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Course
 {
-    public class CannonController : MonoBehaviour
+    public class CannonController : Weapon
     {
         [Header("Transforms")]
         [SerializeField] private Transform baseBody;
@@ -29,14 +29,7 @@ namespace Course
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            AimCannon();
-            FireCannon();
-        }
-
-        private void AimCannon()
+        protected override void AimCannon()
         {
             float yRot = Input.GetAxis("Mouse X");
             float xRot = Input.GetAxis("Mouse Y");
@@ -50,12 +43,12 @@ namespace Course
             baseBody.localEulerAngles = new Vector3(xDegree, yDegree);
         }
 
-        private void FireCannon()
+        protected override void FireCannon()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 CannonBall newCannonBall = Instantiate(cannonBallPrefab, shootingPoint.position, Quaternion.identity);
-                newCannonBall.SetUp(this.transform.forward);
+                newCannonBall.SetUp(this.transform.forward * fireForce);
             }
         }
     }

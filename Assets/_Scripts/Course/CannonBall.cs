@@ -6,11 +6,11 @@ namespace Course
 {
     public class CannonBall : MonoBehaviour
     {
-        private static readonly int explodeParameter = Animator.StringToHash("Exploded");
+        protected static readonly int explodeParameter = Animator.StringToHash("Exploded");
 
         [Header("Components")]
-        [SerializeField] private Rigidbody rb;
-        [SerializeField] private Animator anim;
+        [SerializeField] protected Rigidbody rb;
+        [SerializeField] protected Animator anim;
 
         [Header("Angular velocity")]
         [SerializeField] private float minAngularVelocity;
@@ -30,7 +30,12 @@ namespace Course
         [Header("Others")]
         [SerializeField] private float lifeTime;
 
-        public void SetUp(Vector3 _fireDir)
+        private void Start()
+        {
+            Destroy(this.gameObject, lifeTime);
+        }
+
+        public virtual void SetUp(Vector3 _fireDir)
         {
             this.rb.AddForce(_fireDir * fireForce, firingForceMode);
 
@@ -60,10 +65,9 @@ namespace Course
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        protected virtual void OnCollisionEnter(Collision collision)
         {
             this.rb.angularVelocity = Vector3.zero;
-            this.rb.velocity = Vector3.zero;
             this.rb.isKinematic = true;
             this.rb.detectCollisions = false;
 

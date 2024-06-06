@@ -8535,6 +8535,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7236696490709168849, guid: bd557301846767b459959894082f15d7,
+        type: 3}
+      propertyPath: fireForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236696490709168849, guid: bd557301846767b459959894082f15d7,
+        type: 3}
+      propertyPath: firingForceMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7491132528243105560, guid: bd557301846767b459959894082f15d7,
         type: 3}
       propertyPath: m_Name
